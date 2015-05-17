@@ -44,6 +44,10 @@ public class Decode {
             bits.append(bit);
             if (originals.containsKey(bits.toString())) {
                 String temp = Integer.toString(originals.get(bits.toString()), 2); //Wrong method
+                
+                while(temp.length() != 8){
+                    temp = "0"+temp;
+                }
 
                 for(int i = 0; i < temp.length(); i++){
                     out.writeBit(Integer.parseInt(temp.substring(i, i+1)));
