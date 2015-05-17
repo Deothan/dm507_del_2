@@ -19,11 +19,17 @@ public class Decode {
         BitOutputStream out = new BitOutputStream(new FileOutputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\out2.txt"));
 
         int[] input = new int[256];
-        int bit;
+        int bit, read = 0, written = 0;
         StringBuilder bits = new StringBuilder();
         
         for(int i = 0; i < input.length; i++){
             input[i] = in.readInt();
+        }
+        
+        for(int i : input){
+            if(i > 0){
+                read += i;
+            }
         }
         
         String[] codes = Huffman.createCode(input);
@@ -34,12 +40,15 @@ public class Decode {
                 originals.put(codes[i], i);
         }
         
-        while ((bit = in.readBit()) != -1) {
+        while ((bit = in.readBit()) != -1 && written  <= read) {
             bits.append(bit);
-            System.out.println("bits: "+bits);
             if (originals.containsKey(bits.toString())) {
-                System.out.println("result: " + bits.toString());
-                //out.writeBit(originals.get(bits.toString()));
+                String temp = Integer.toString(originals.get(bits.toString()), 2); //Wrong method
+
+                for(int i = 0; i < temp.length(); i++){
+                    out.writeBit(Integer.parseInt(temp.substring(i, i+1)));
+                }
+                written++;
                 bits.delete(0, bits.length());
             }  
         }
