@@ -30,19 +30,35 @@ public class PQHeap implements PQ{
     public void insert(Element e) {
         if(current < max){
             heap[current] = e;
+            flowUp(current);
             current++;
-            heapify(current);
         }            
         else{
             System.out.println("No more room in the array");
         }
     }
-    //Build min heap
-    private void heapify(int n){
-        for (int i = n/2; i >= 0; i--){
-            minHeap(i, n);
-        }            
+    
+    // Helper functions
+    //bobler den nye op på plads
+    private void flowUp(int n) {
+        if (n != 0) {
+            int priority = heap[n].key;
+            int parentPriority = heap[(n - 1) / 2].key;
+
+            if (priority < parentPriority) {
+                swap(n, (n - 1) / 2);
+                flowUp((n - 1) / 2);
+            }
+        }
     }
+
+    
+//    //Build min heap
+//    private void heapify(int n){
+//        for (int i = n/2; i >= 0; i--){
+//            minHeap(i, n);
+//        }            
+//    }
     //Min heap
     private void minHeap(int parent, int n)
     { 

@@ -34,12 +34,12 @@ public class Decode {
         
         String[] codes = Huffman.createCode(input);
         HashMap<String, Integer> originals = new HashMap();
-        
+
         for(int i = 0; i < codes.length; i++){
             if(codes[i] != null)
                 originals.put(codes[i], i);
         }
-        
+
         while ((bit = in.readBit()) != -1 && written  <= read) {
             bits.append(bit);
             if (originals.containsKey(bits.toString())) {

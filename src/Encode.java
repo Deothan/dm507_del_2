@@ -28,7 +28,7 @@ public class Encode {
         
         //Lav huffmankode tabel
         String[] huffmanCode = Huffman.createCode(input);
-        
+
         //Skriver frekvenser
         for(int i: input){
             out.writeInt(i);
