@@ -31,7 +31,7 @@ public class Decode {
                 read += i;
             }
         }
-        
+
         HuffmanTree tree = new HuffmanTree(input);
         String[] codes = tree.getCodes();
         
@@ -42,10 +42,10 @@ public class Decode {
                 originals.put(codes[i], i);
         }
 
-        while ((bit = in.readBit()) != -1 && written  <= read) {
+        while ((bit = in.readBit()) != -1 && written  < read) {
             bits.append(bit);
             if (originals.containsKey(bits.toString())) {
-                String temp = Integer.toString(originals.get(bits.toString()), 2); //Wrong method
+                String temp = Integer.toString(originals.get(bits.toString()), 2);
                 
                 while(temp.length() < 8){
                     temp = "0"+temp;

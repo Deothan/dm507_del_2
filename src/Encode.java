@@ -10,7 +10,6 @@ public class Encode {
     public static void main(String[] args) throws Exception {
         BitInputStream in = new BitInputStream(new FileInputStream(args[0]));
 	BitOutputStream out = new BitOutputStream(new FileOutputStream(args[1]));
-
         
         int[] input = new int[256];
         int bit;
@@ -26,7 +25,7 @@ public class Encode {
         }
 
         in = new BitInputStream(new FileInputStream(args[0]));
-        
+
         //Lav huffmankode tabel
         HuffmanTree tree = new HuffmanTree(input);
         String[] huffmanCode = tree.getCodes();

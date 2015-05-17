@@ -27,28 +27,26 @@ public class HuffmanTree {
             n.setRight(y.data);
 
             queue.insert(new Element(key, n)); 
-        }
+        }       
         
-        
-        root = queue.ExtractMin().data;
+        root = queue.ExtractMin().data;   
     }
-    
-    private void createHuffmanTree(int[] input){
 
-    }
-    
     public String[] getCodes(){
-        inorderTreeWalk(root, "");
+        treeWalk(root, "");
         return codes;
     }
     
-    private void inorderTreeWalk(Node x, String code){
+    private void treeWalk(Node x, String code){
         if(x != null){
-            inorderTreeWalk(x.getLeft(), code+"0");
-            inorderTreeWalk(x.getRight(), code+"1");
+            treeWalk(x.getLeft(), code+"0");
+            treeWalk(x.getRight(), code+"1");
             
             if(x.getData() != -1){
-                codes[x.getData()] = code;
+                if(!code.equals(""))
+                    codes[x.getData()] = code;
+                else
+                    codes[x.getData()] = "1";
             }
         }        
     }
