@@ -36,12 +36,13 @@ public class Encode {
                 String temp = huffmanCode[Integer.parseInt(bits.toString(), 2)];
 
                 for(int i = 0; i < temp.length(); i++){
-                    out.writeInt(Integer.parseInt(temp.substring(i, i+1)));
+                    out.writeBit(Integer.parseInt(temp.substring(i, i+1)));
                 }
                 bits.delete(0, 8);
             }
         }      
-
-	out.close();        
+        
+        in.close();
+	out.close();       
     }
 }
