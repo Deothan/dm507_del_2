@@ -32,7 +32,9 @@ public class Decode {
             }
         }
         
-        String[] codes = Huffman.createCode(input);
+        HuffmanTree tree = new HuffmanTree(input);
+        String[] codes = tree.getCodes();
+        
         HashMap<String, Integer> originals = new HashMap();
 
         for(int i = 0; i < codes.length; i++){
