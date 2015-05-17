@@ -8,8 +8,8 @@ import java.io.FileOutputStream;
  */
 public class Encode {  
     public static void main(String[] args) throws Exception {
-        BitInputStream in = new BitInputStream(new FileInputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\in.txt"));
-	BitOutputStream out = new BitOutputStream(new FileOutputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\out.txt"));
+        BitInputStream in = new BitInputStream(new FileInputStream(args[0]));
+	BitOutputStream out = new BitOutputStream(new FileOutputStream(args[1]));
         
         int[] input = new int[256];
         int bit;
@@ -24,7 +24,7 @@ public class Encode {
             }  
         }
 
-        in = new BitInputStream(new FileInputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\in.txt"));
+        in = new BitInputStream(new FileInputStream(args[0]));
         
         //Lav huffmankode tabel
         String[] huffmanCode = Huffman.createCode(input);

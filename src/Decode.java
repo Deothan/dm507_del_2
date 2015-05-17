@@ -15,8 +15,8 @@ import java.util.HashMap;
  */
 public class Decode {
     public static void main(String[] args) throws Exception {
-        BitInputStream in = new BitInputStream(new FileInputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\out.txt"));
-        BitOutputStream out = new BitOutputStream(new FileOutputStream("C:\\Users\\Deothan\\Documents\\Code\\dm507_del_2\\src\\out2.txt"));
+        BitInputStream in = new BitInputStream(new FileInputStream(args[0]));
+        BitOutputStream out = new BitOutputStream(new FileOutputStream(args[1]));
 
         int[] input = new int[256];
         int bit, read = 0, written = 0;
@@ -45,7 +45,7 @@ public class Decode {
             if (originals.containsKey(bits.toString())) {
                 String temp = Integer.toString(originals.get(bits.toString()), 2); //Wrong method
                 
-                while(temp.length() != 8){
+                while(temp.length() < 8){
                     temp = "0"+temp;
                 }
 
